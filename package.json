@@ -1,0 +1,46 @@
+{
+  "name": "tree-sitter-xpath",
+  "version": "1.0.0-alpha.0",
+  "description": "XPath grammar for tree-sitter",
+  "main": "bindings/node",
+  "repository": "https://github.com/eyelidlessness/tree-sitter-xpath",
+  "author": "ODK",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "esbuild": "^0.14.27",
+    "tree-sitter": "^0.20.0",
+    "tree-sitter-cli": "^0.20.6",
+    "typescript": "^4.6.2",
+    "web-tree-sitter": "^0.20.5"
+  },
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "generate-parser": "tree-sitter generate",
+    "build-all": "yarn build && yarn build-wasm",
+    "build": "yarn compile && yarn generate-parser && yarn build-napi",
+    "build-napi": "node-gyp rebuild",
+    "build-wasm": "tree-sitter build-wasm --docker",
+    "test": "node ./dist/grammar.test.js && tree-sitter test",
+    "parse": "tree-sitter parse",
+    "compile-and-test": "yarn compile && yarn test"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.xpath",
+      "file-types": ["xpath"],
+      "injection-regex": "xpath",
+      "highlights": [
+        "./queries/highlights.scm"
+      ]
+    }
+  ],
+  "volta": {
+    "node": "16.15.0",
+    "yarn": "1.22.18"
+  }
+}
