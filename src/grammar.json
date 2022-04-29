@@ -11,29 +11,71 @@
       "value": "query"
     },
     "_expr": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "function_call"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "infix_expression"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "path_expr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_primary_expr"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "unary_expr"
-        }
-      ]
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "function_call"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "infix_expression"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "path_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_primary_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "unary_expr"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "comment"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "comment": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "\\n?\\(:"
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "ALIAS",
+              "content": {
+                "type": "PATTERN",
+                "value": "([^:()]|[:][^)]|[(][^:]|[^:][)]|[)][:])+"
+              },
+              "named": true,
+              "value": "comment_content"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": ":)"
+          }
+        ]
+      }
     },
     "_primary_expr": {
       "type": "PREC_LEFT",
@@ -3013,6 +3055,10 @@
     {
       "type": "SYMBOL",
       "name": "_whitespace_extra"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "comment"
     }
   ],
   "conflicts": [

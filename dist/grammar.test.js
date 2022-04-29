@@ -128,6 +128,9 @@ const collectErrors = (node) => {
             slowestResult: [slowest[0], `${slowest[1].toFixed(2)} ms`],
         };
         console.log('results', JSON.stringify(finalResults, null, 2));
+        if (results.failed > 0 || results.passingExpressionsWithErrors) {
+            process.exit(1);
+        }
     }
 })();
 //# sourceMappingURL=grammar.test.js.map

@@ -109,6 +109,21 @@
     "fields": {}
   },
   {
+    "type": "comment",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "comment_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "comment_test",
     "named": true,
     "fields": {}
@@ -300,6 +315,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -434,6 +453,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -562,6 +585,10 @@
           {
             "type": "and",
             "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
           },
           {
             "type": "context_item_expr",
@@ -820,6 +847,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -964,6 +995,10 @@
           {
             "type": "and",
             "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
           },
           {
             "type": "context_item_expr",
@@ -1178,6 +1213,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -1256,6 +1295,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "context_item_expr",
           "named": true
@@ -1451,6 +1494,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -1663,6 +1710,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -1741,6 +1792,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "context_item_expr",
           "named": true
@@ -1939,6 +1994,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -2067,6 +2126,10 @@
           {
             "type": "and",
             "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
           },
           {
             "type": "context_item_expr",
@@ -2279,6 +2342,10 @@
           {
             "type": "and",
             "named": false
+          },
+          {
+            "type": "comment",
+            "named": true
           },
           {
             "type": "context_item_expr",
@@ -2417,6 +2484,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -2629,6 +2700,10 @@
             "named": false
           },
           {
+            "type": "comment",
+            "named": true
+          },
+          {
             "type": "context_item_expr",
             "named": true
           },
@@ -2707,6 +2782,10 @@
       "multiple": false,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "context_item_expr",
           "named": true
@@ -3306,6 +3385,10 @@
     "named": false
   },
   {
+    "type": ":)",
+    "named": false
+  },
+  {
     "type": ":*",
     "named": false
   },
@@ -3380,6 +3463,10 @@
   {
     "type": "comment",
     "named": false
+  },
+  {
+    "type": "comment_content",
+    "named": true
   },
   {
     "type": "decimal_literal",

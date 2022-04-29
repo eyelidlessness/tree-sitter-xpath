@@ -9,7 +9,7 @@ const commaSep = (rule) => {
 };
 const xpathGrammar = grammar({
     name: 'xpath',
-    extras: ($) => [$._whitespace_extra],
+    extras: ($) => [$._whitespace_extra, $.comment],
     conflicts: ($) => [
         [$._expr, $.step_expr],
         [$.kw, $.name_test],
@@ -27,7 +27,9 @@ const xpathGrammar = grammar({
     ]),
     rules: {
         query: ($) => alias($._expr, 'query'),
-        _expr: ($) => choice($.function_call, $.infix_expression, $.path_expr, $._primary_expr, $.unary_expr),
+        _expr: ($) => prec.left(seq(choice($.function_call, $.infix_expression, $.path_expr, $._primary_expr, $.unary_expr, $.comment))),
+        /** Currently only use in tests */
+        comment: ($) => prec.left(seq(/\n?\(:/, repeat(alias(((/([^:()]|[:][^)]|[(][^:]|[^:][)]|[)][:])+/)), $.comment_content)), ':)')),
         _primary_expr: ($) => prec.left(23, choice($._literal, $.var_ref, $.id_function_call, $.function_call, $.parenthesized_expr, $.context_item_expr, $.unary_lookup)),
         _literal: ($) => choice($.string_literal, $._numeric_literal),
         string_literal: ($) => choice(seq('"', repeat(choice($.predefined_entity_ref, $.char_ref, $.escape_quote, /[^"&]/)), '"'), seq("'", repeat(choice($.predefined_entity_ref, $.char_ref, $.escape_apos, /[^'&]/)), "'")),

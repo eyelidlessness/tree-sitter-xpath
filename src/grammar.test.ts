@@ -183,5 +183,9 @@ const collectErrors = (node: Parser.SyntaxNode): Parser.SyntaxNode[] => {
     };
 
     console.log('results', JSON.stringify(finalResults, null, 2));
+
+    if (results.failed > 0 || results.passingExpressionsWithErrors) {
+      process.exit(1);
+    }
   }
 })();
